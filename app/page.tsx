@@ -1,64 +1,81 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { Activity, LayoutDashboard, Sliders, FileText } from 'lucide-react';
 
-export default function Home() {
+export default function DashboardPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-indigo-500/30">
+      {/* Pasek Nawigacji / Header */}
+      <header className="sticky top-0 z-10 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
+              <Activity className="w-5 h-5 text-indigo-400" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight text-slate-100">
+                Data Science Dashboard
+              </h1>
+              <p className="text-xs text-slate-400 font-mono">
+                Panel Badawczy | Praca Magisterska
+              </p>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center gap-2 text-sm text-slate-400 font-mono bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            System Online
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-[1200px] mx-auto px-4 md:px-8 py-16 flex flex-col items-center justify-center space-y-12">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-br from-slate-100 via-slate-200 to-indigo-400 bg-clip-text text-transparent">
+            Freelancer Earnings Analytics
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-2xl text-sm md:text-base text-slate-400 leading-relaxed mx-auto">
+            Analiza statystyczna (K-Means) bazy danych z Kaggle w 100% zaimplementowana w środowisku Node.js i Next.js App Router bez użycia Pythona.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+          <Link href="/explorer" className="group bg-slate-900/50 p-6 rounded-2xl border border-slate-800/50 hover:border-indigo-500/40 transition hover:bg-slate-900 flex flex-col items-start gap-4 shadow-xl">
+            <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 group-hover:bg-indigo-500/20">
+              <LayoutDashboard className="w-6 h-6 text-indigo-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-100">Cluster Explorer</h3>
+              <p className="text-xs text-slate-400 mt-1">Mapa klastrów 2D z filtrami i możliwością dynamicznego trenowania (K-Means).</p>
+            </div>
+          </Link>
+
+          <Link href="/what-if" className="group bg-slate-900/50 p-6 rounded-2xl border border-slate-800/50 hover:border-indigo-500/40 transition hover:bg-slate-900 flex flex-col items-start gap-4 shadow-xl">
+            <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 group-hover:bg-indigo-500/20">
+              <Sliders className="w-6 h-6 text-indigo-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-100">What-If Simulator</h3>
+              <p className="text-xs text-slate-400 mt-1">Zmieniaj parametry freelancera i animuj przeskok między klastrami na mapie.</p>
+            </div>
+          </Link>
+
+          <Link href="/methodology" className="group bg-slate-900/50 p-6 rounded-2xl border border-slate-800/50 hover:border-indigo-500/40 transition hover:bg-slate-900 flex flex-col items-start gap-4 shadow-xl">
+            <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 group-hover:bg-indigo-500/20">
+              <FileText className="w-6 h-6 text-indigo-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-100">Methodology Story</h3>
+              <p className="text-xs text-slate-400 mt-1">Opis krok po kroku pozyskiwania i czyszczenia danych oraz doboru parametru k.</p>
+            </div>
+          </Link>
+
+        </section>
+
+        <div className="mt-8">
+            <Link href="/explorer" className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl transition shadow-md shadow-indigo-500/10">
+                Przejdź do analizy K-Means
+            </Link>
         </div>
+
       </main>
     </div>
   );
